@@ -8,7 +8,6 @@ info:
   contact:
     name: Nana Kwesi Ofosu-Aikins
     email: nanaaikinson24@gmail.com
-    url: nanaaikinson.com
 servers:
   - url: 'https://churchsync.test/api'
     description: Local
