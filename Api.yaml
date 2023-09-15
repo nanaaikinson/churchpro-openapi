@@ -11,6 +11,8 @@ info:
 servers:
   - url: 'https://churchsync.test/api'
     description: Local
+  - description: Testing
+    url: 'https://churchpro.aikintech.com/api'
 tags:
   - name: admin
   - name: central
