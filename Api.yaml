@@ -271,7 +271,7 @@ paths:
         - JWT: []
   /c/auth/forgot-password:
     post:
-      summary: Your GET endpoint
+      summary: ''
       tags:
         - central
       responses:
@@ -291,7 +291,7 @@ paths:
               $ref: '#/components/schemas/ForgotPasswordRequest'
   /c/files/upload:
     post:
-      summary: Your GET endpoint
+      summary: ''
       tags:
         - central
       responses:
@@ -373,7 +373,7 @@ paths:
         - mobile
   /t/organization:
     get:
-      summary: Your GET endpoint
+      summary: ''
       tags:
         - tenant
       responses:
@@ -569,7 +569,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: ''
       tags:
         - tenant
       responses:
