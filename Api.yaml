@@ -806,8 +806,14 @@ components:
       properties:
         verificationCode:
           type: string
+        channel:
+          type: string
+          enum:
+            - tenant
+            - mobile
       required:
         - verificationCode
+        - channel
     Prayer:
       type: object
       x-examples:
@@ -1438,7 +1444,6 @@ components:
         message:
           type: string
       required:
-        - data
         - message
     OrganizationOnboardingResponse:
       title: OrganizationOnboardingResponse
