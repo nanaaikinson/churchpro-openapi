@@ -269,6 +269,26 @@ paths:
       description: 'Cental: Auth logout'
       security:
         - JWT: []
+  /c/auth/forgot-password:
+    post:
+      summary: Your GET endpoint
+      tags:
+        - central
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      operationId: auth-forgot-password
+      description: 'Central: Auth forgot password'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ForgotPasswordRequest'
   /c/files/upload:
     post:
       summary: Your GET endpoint
@@ -1489,6 +1509,16 @@ components:
         - deviceId
         - fcmToken
         - type
+    ForgotPasswordRequest:
+      title: ForgotPasswordRequest
+      x-stoplight:
+        id: uenqt0nyerqsu
+      type: object
+      properties:
+        email:
+          type: string
+      required:
+        - email
   securitySchemes:
     JWT:
       type: http
