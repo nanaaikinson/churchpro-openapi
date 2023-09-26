@@ -792,12 +792,15 @@ components:
           enum:
             - mobile
             - tenant
+        terms:
+          type: boolean
       required:
         - firstName
         - lastName
         - email
         - password
         - channel
+        - terms
     VerifyAccountRequest:
       title: VerifyAccountRequest
       x-stoplight:
@@ -1409,14 +1412,6 @@ components:
         avatar:
           type: string
           nullable: true
-        onboardingStep:
-          type: string
-          enum:
-            - account creation
-            - account verification
-            - tenant onboarding
-            - tenant approval
-            - complete
         emailVerified:
           type: boolean
         organizations:
@@ -1429,7 +1424,6 @@ components:
         - lastName
         - email
         - avatar
-        - onboardingStep
         - emailVerified
     VerifyAccountResponse:
       title: VerifyAccountResponse
@@ -1437,13 +1431,6 @@ components:
         id: htol1s9a5iyfw
       type: object
       properties:
-        data:
-          type: object
-          required:
-            - onboardingStep
-          properties:
-            onboardingStep:
-              type: string
         message:
           type: string
       required:
@@ -1454,17 +1441,9 @@ components:
         id: 37c21e34a7357
       type: object
       properties:
-        data:
-          type: object
-          required:
-            - onboardingStep
-          properties:
-            onboardingStep:
-              type: string
         message:
           type: string
       required:
-        - data
         - message
     UpdatePasswordRequest:
       title: UpdatePasswordRequest
