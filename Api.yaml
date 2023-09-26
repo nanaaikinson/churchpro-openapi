@@ -1417,6 +1417,8 @@ components:
             - tenant onboarding
             - tenant approval
             - complete
+        emailVerified:
+          type: boolean
         organizations:
           type: array
           items:
@@ -1428,6 +1430,7 @@ components:
         - email
         - avatar
         - onboardingStep
+        - emailVerified
     VerifyAccountResponse:
       title: VerifyAccountResponse
       x-stoplight:
