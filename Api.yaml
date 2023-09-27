@@ -382,7 +382,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Organization'
+                $ref: '#/components/schemas/OrganizationResponse'
       operationId: get-organization
       security:
         - JWT: []
@@ -400,6 +400,10 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrganizationResponse'
       security:
         - JWT: []
       parameters:
@@ -415,6 +419,7 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateOrganizationRequest'
+        description: ''
       tags:
         - tenant
       description: 'Tenant: Update organization'
@@ -1122,6 +1127,18 @@ components:
         logo:
           type: string
           nullable: true
+        status:
+          type: string
+          enum:
+            - enabled
+            - disabled
+            - suspended
+        approval:
+          type: string
+          enum:
+            - approved
+            - pending
+            - rejected
         data:
           type: object
           required:
@@ -1171,6 +1188,8 @@ components:
         - bookmarks
         - likes
         - logo
+        - status
+        - approval
         - data
     PrayerRequest:
       type: object
@@ -1510,6 +1529,19 @@ components:
           type: string
       required:
         - email
+    OrganizationResponse:
+      title: OrganizationResponse
+      x-stoplight:
+        id: vz41bq1xzgmhi
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Organization'
+        message:
+          type: string
+      required:
+        - data
+        - message
   securitySchemes:
     JWT:
       type: http
