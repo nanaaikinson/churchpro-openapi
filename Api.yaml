@@ -747,12 +747,17 @@ components:
         channel:
           type: string
           enum:
-            - admin
             - mobile
-            - tenant
+            - web
+        provider:
+          type: string
+          enum:
+            - google
+            - apple
       required:
         - accessToken
         - channel
+        - provider
     LocalSignInRequest:
       title: LocalSignInRequest
       x-stoplight:
@@ -766,9 +771,8 @@ components:
         channel:
           type: string
           enum:
-            - admin
+            - web
             - mobile
-            - tenant
       required:
         - email
         - password
@@ -791,7 +795,7 @@ components:
           type: string
           enum:
             - mobile
-            - tenant
+            - web
         terms:
           type: boolean
       required:
@@ -812,8 +816,8 @@ components:
         channel:
           type: string
           enum:
-            - tenant
             - mobile
+            - web
       required:
         - verificationCode
         - channel
