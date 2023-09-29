@@ -323,7 +323,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/OrganizationOnboardingResponse'
       operationId: organization-onboarding
-      description: 'Central: Organzation onboarding'
+      description: 'Central: Organization onboarding'
       parameters: []
       security:
         - JWT: []
