@@ -1139,6 +1139,8 @@ components:
             - approved
             - pending
             - rejected
+        createdAt:
+          type: string
         data:
           type: object
           required:
@@ -1190,6 +1192,7 @@ components:
         - logo
         - status
         - approval
+        - createdAt
         - data
     PrayerRequest:
       type: object
