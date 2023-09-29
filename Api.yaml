@@ -667,6 +667,14 @@ components:
           format: email
         roleAtChurch:
           type: string
+          enum:
+            - Founder/Overseer
+            - Head/Resident Pastor/Lead Pastor/Bishop
+            - Pastor/Minister/Reverend
+            - Administrator
+            - Church Leader
+            - Church Member
+            - Other
         defaultBranch:
           type: string
         phoneNumber:
