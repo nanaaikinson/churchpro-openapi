@@ -1475,9 +1475,14 @@ components:
         id: 37c21e34a7357
       type: object
       properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
         message:
           type: string
       required:
+        - data
         - message
     UpdatePasswordRequest:
       title: UpdatePasswordRequest
