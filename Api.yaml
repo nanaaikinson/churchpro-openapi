@@ -334,43 +334,6 @@ paths:
             schema:
               $ref: '#/components/schemas/OnboardingRequest'
     parameters: []
-  /m/prayers:
-    get:
-      summary: ''
-      tags:
-        - mobile
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MobilePrayers'
-      operationId: client-prayer-requests
-      security:
-        - JWT: []
-      description: 'Mobile: Get prayer-requests'
-    post:
-      summary: ''
-      operationId: client-request-prayer
-      responses:
-        '200':
-          description: OK
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/MessageResponse'
-      description: 'Client: request for a prayer'
-      security:
-        - JWT: []
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PrayerRequest'
-      tags:
-        - mobile
   /t/organization:
     get:
       summary: ''
@@ -644,6 +607,72 @@ paths:
           name: X-Tenant
           description: Tenant identification key
           required: true
+  /m/prayers:
+    get:
+      summary: ''
+      tags:
+        - mobile
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobilePrayers'
+      operationId: client-prayer-requests
+      security:
+        - JWT: []
+      description: 'Mobile: Get prayer-requests'
+    post:
+      summary: ''
+      operationId: client-request-prayer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+      description: 'Client: request for a prayer'
+      security:
+        - JWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PrayerRequest'
+      tags:
+        - mobile
+  /m/organizations:
+    get:
+      summary: ''
+      tags:
+        - mobile
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedOrganizations'
+      operationId: client-get-organizations
+      description: 'Mobile: Get organizations'
+      security:
+        - JWT: []
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: search
+        - schema:
+            type: number
+          in: query
+          name: page
+        - schema:
+            type: number
+          in: query
+          name: limit
 components:
   schemas:
     OnboardingRequest:
@@ -1558,6 +1587,81 @@ components:
       required:
         - data
         - message
+    PaginatedOrganizations:
+      type: object
+      x-examples:
+        Example 1:
+          data:
+            - id: 01H9DMZ4P2XB62T3H188HJVZ96
+              title: Test prayer request
+              description: This is a test description
+              createdAt: '2023-09-03T13:50:56.000000Z'
+              status: null
+              name: Nana Aikinson
+              email: nanaaikinson2020@gmail.com
+              phoneNumber: null
+          meta:
+            show: Showing 1 to 1 of 1 items
+            total: 1
+            count: 1
+            perPage: 10
+            currentPage: 1
+            totalPages: 1
+            links:
+              first: 'https://chsync.test/api/t/prayers?page=1'
+              last: 'https://chsync.test/api/t/prayers?page=1'
+              prev: null
+              next: null
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+        meta:
+          type: object
+          required:
+            - show
+            - total
+            - count
+            - perPage
+            - currentPage
+            - totalPages
+            - links
+          properties:
+            show:
+              type: string
+            total:
+              type: integer
+            count:
+              type: integer
+            perPage:
+              type: integer
+            currentPage:
+              type: integer
+            totalPages:
+              type: integer
+            links:
+              type: object
+              required:
+                - first
+                - last
+                - prev
+                - next
+              properties:
+                first:
+                  type: string
+                last:
+                  type: string
+                  nullable: true
+                prev:
+                  type: string
+                  nullable: true
+                next:
+                  type: string
+                  nullable: true
+      required:
+        - data
+        - meta
   securitySchemes:
     JWT:
       type: http
